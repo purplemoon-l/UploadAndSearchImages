@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photo Search AI</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.879.0.min.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/apigClient.js"></script>
+        <script src="index.js"></script>
+
+        <style>
+            .center1 {
+                margin: auto;
+                width: 50%;
+                border: 3px solid green;
+                padding: 10px;
+            }
+            .center2 {
+                margin: auto;
+                width: 50%;
+                border: 3px solid rgb(73, 11, 245);
+                padding: 10px;
+            }
+        </style>
+    </head>
+    
+    <center>
+        <header style="font-size: 40px;">
+            Photo Search AI
+        </header>
+    </center>
+    <body style="color: black; background-color: whitesmoke;">
+
+    <br><br><br><br><br>
+    <center><h2>Upload Images and Labels:</h2></center>
+    <div class = "center1">
+        
+        <div class="Upload_files">
+            <center>
+            <form>
+                <input type="file" id="uploaded_file">
+                <input type="text" id="custom_labels" placeholder="Add custom labels" value="">
+            </form>
+            </center>
+            <br>
+            <center>
+            <button id="upload_files" onclick="uploadPhoto()">Upload</button>
+            </center>
+        </div>
+
+        <div>
+            <div id="upload_message">
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br>
+
+    <center><h2>Search for Images:</h2></center>
+    <div class="center2">
+        <div class="container-fluid">
+            <center>
+            <form action="", method="get", target="", id="search_photos">
+                <input name="search_query" id = "search_query" type="text" placeholder="Enter query here"
+                style="width: 405px;">
+                <button type="button">
+                    <i class="large material-icons" id="mic_search" onclick="runSpeechRecognition()">mic</i>
+                </button><span id="action"></span>
+            </form>
+            </center>
+            <br>
+            <center>
+            <div class="row">
+                <button type="button" style="width:100px; height: 25px;" onclick="searchPhotos()">Search</button>
+            </div>
+            </center>
+        </div>
+
+        <div id="search_results">
+        </div>
+    </div>
+    </body>
+</html>

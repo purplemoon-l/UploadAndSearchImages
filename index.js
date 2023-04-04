@@ -109,12 +109,17 @@ function searchPhotos() {
 
         paths = result["data"].split(",");
         console.log(paths)
-        console.log("paths : ", paths);
+        console.log("print paths : ", paths);
 
         photosDiv.innerHTML = "";
 
         var i;
-        if (paths.length > 0 && paths[0]!=" "){
+        if (result["data"] == "Wrong Query"){
+            photosDiv.innerHTML += '<h1>Choose another label!</h1>';
+        }
+
+
+        else if (paths.length > 0 && paths[0]!=" "){
             for (i = 0; i < paths.length; i++) {
             //img = paths[i].split('/');
             //imgName = img[img.length - 1];
